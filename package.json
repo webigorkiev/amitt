@@ -4,6 +4,7 @@
   "version": "0.0.2",
   "description": "Template for @jwn-js packages",
   "main": "dist/index.js",
+  "types": "src/index.ts",
   "scripts": {
     "app": "concurrently \"npm run serve\" \"nodemon ./dist/index-dev.js\"",
     "serve": "webpack --config ./webpack.config.js --watch",
