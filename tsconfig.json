@@ -12,6 +12,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "suppressImplicitAnyIndexErrors": true,
+    "noImplicitThis": false,
     "baseUrl": ".",
     "paths": {
       "@/*": [
