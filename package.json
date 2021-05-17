@@ -7,6 +7,7 @@
   "scripts": {
     "app": "concurrently \"npm run serve\" \"nodemon ./dist/index-dev.js\"",
     "serve": "webpack --config ./webpack.config.js --watch",
+    "build": "webpack --config ./webpack.config.js --mode production",
     "test": "mochapack --webpack-config ./webpack.config.js --recursive ./test/unit/**/*.{js,cjs,mjs,ts}",
     "lint": "eslint src/** --ignore-path ./.eslintignore",
     "lint:fix": "eslint src/** --ignore-path ./.eslintignore --fix",
