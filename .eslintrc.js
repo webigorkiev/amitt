@@ -7,7 +7,8 @@ module.exports = {
         "ecmaVersion": 2020,
         "sourceType": "module",
         "project": "./tsconfig.json",
-        "tsconfigRootDir": "./"
+        "tsconfigRootDir": "./",
+        "createDefaultProgram": true
     },
     extends: [
         "plugin:@typescript-eslint/recommended",
@@ -42,5 +43,6 @@ module.exports = {
         "no-return-assign": "off",
         "no-sequences": "off",
         "no-shadow": "off",
+        "@typescript-eslint/no-var-requires": "off"
     },
 };
