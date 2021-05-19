@@ -30,7 +30,7 @@ module.exports = (env, argv) => {
         output: {
             filename: "[name].js",
             chunkFilename:  "chunks/[name].js",
-            path: path.resolve((isDevelopment ? "./develop" : "./dist")),
+            path: path.resolve((isDevelopment ? "./development" : "./dist")),
             libraryTarget: "commonjs2",
             globalObject: "this"
         },
