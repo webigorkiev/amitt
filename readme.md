@@ -1,5 +1,5 @@
-# @jwn-js/amit packages
+# @jwn-js/amitt packages
 
-### **Clone @jwn-js/amit**
+### **Clone @jwn-js/amitt**
 
-`git clone --depth=1 ssh://tehnoskarb@godisonline.net:/var/www/tehnoskarb/git/@jwn-js/amit.git .`
+`git clone --depth=1 ssh://tehnoskarb@godisonline.net:/var/www/tehnoskarb/git/@jwn-js/amitt.git .`

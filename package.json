@@ -1,8 +1,8 @@
 {
-  "name": "@jwn-js/amit",
+  "name": "@jwn-js/amitt",
   "private": true,
   "version": "0.0.1",
-  "description": "@jwn-js/amit packages",
+  "description": "@jwn-js/amitt packages",
   "main": "dist/index.js",
   "types": "src/index.ts",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://tehnoskarb@godisonline.net:/var/www/tehnoskarb/git/@jwn-js/amit.git"
+    "url": "ssh://tehnoskarb@godisonline.net:/var/www/tehnoskarb/git/@jwn-js/amitt.git"
   },
   "author": "webigorkiev",
   "license": "ISC",
