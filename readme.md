@@ -1,7 +1,5 @@
-# Template for @jwn-js packages
+# @jwn-js/amit packages
 
-### **Clone node-ts-starter-package**
+### **Clone @jwn-js/amit**
 
-`git clone --depth=1 ssh://tehnoskarb@godisonline.net:/var/www/tehnoskarb/git/@jwn-js/node-ts-starter-package.git .`
-
-Then delete **.git** dir
+`git clone --depth=1 ssh://tehnoskarb@godisonline.net:/var/www/tehnoskarb/git/@jwn-js/amit.git .`
