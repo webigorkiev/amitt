@@ -1,7 +1,7 @@
 {
   "name": "@jwn-js/amitt",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "@jwn-js/amitt packages",
   "main": "dist/index.js",
   "types": "src/index.ts",
@@ -37,7 +37,7 @@
     "nyc": "^15.1.0",
     "ts-mocha": "^8.0.0",
     "typedoc": "^0.20.36",
-    "typescript": "^4.4.0-dev.20210519",
+    "typescript": "^4.2.4",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",
     "webpack-node-externals": "^3.0.0"

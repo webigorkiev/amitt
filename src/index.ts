@@ -6,7 +6,7 @@ export declare type Handler = (...args: Array<any>) => any|Promise<any>;
  * @class AsyncEvents
  * @description async events bus
  */
-export default class {
+export class AmittEmitter {
 
     /**
      * Map of events
@@ -81,3 +81,9 @@ export default class {
         return responses;
     }
 }
+
+/**
+ * Export AmittEmitter instance as result of function
+ */
+export const amitt = () => new AmittEmitter();
+export default amitt;

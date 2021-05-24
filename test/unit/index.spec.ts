@@ -1,13 +1,13 @@
-import Amitt from "@/index";
+import {AmittEmitter} from "@/index";
 import type {Handler, EventType} from "@/index";
 import { expect } from 'chai';
 
 describe("amitt", () => {
-    const amittObj = new Amitt();
+    const amittObj = new AmittEmitter();
 
     describe("method`s properties", () => {
         it('should default export be a function', () => {
-            expect(Amitt).to.be.a('function');
+            expect(AmittEmitter).to.be.a('function');
         });
         it("on should be a function", () => {
             expect(amittObj)
