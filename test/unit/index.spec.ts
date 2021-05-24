@@ -47,4 +47,38 @@ describe("amitt", () => {
             expect(result).to.eql(false);
         });
     });
+
+    describe("events", () => {
+        const event : EventType = "test";
+        const handler:Handler = (p1, p2) => {
+
+            return [p1, p2]
+        };
+        const handler2:Handler = p1 => {
+
+            return [p1]
+        };
+        amittObj.on(event, handler);
+
+        it("emit result", () => {
+            const result = amittObj.emit(event, 1, 2);
+            expect(result).is.a("array");
+            expect(result[0]).to.eql([1, 2]);
+        });
+        amittObj.on(event, handler2);
+
+        it("emit result 2 handler", () => {
+            const result = amittObj.emit(event, 1, 2);
+            expect(result).is.a("array");
+            expect(result[0]).to.eql([1, 2]);
+            expect(result[1]).to.eql([1]);
+        });
+
+        it("emit result off handler", () => {
+            amittObj.off(event, handler);
+            const result = amittObj.emit(event, 1);
+            expect(result).is.a("array");
+            expect(result[0]).to.eql([1]);
+        });
+    })
 })
