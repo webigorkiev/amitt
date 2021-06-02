@@ -8,11 +8,12 @@
     "target": "es2020",
     "strictPropertyInitialization": false,
     "strict": true,
-    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "suppressImplicitAnyIndexErrors": true,
     "noImplicitThis": false,
+    "declaration": true,
+    "outDir": "dist",
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -20,6 +21,9 @@
       ]
     }
   },
+  "include": [
+    "./src/*"
+  ],
   "exclude"        : [
     "node_modules"
   ]
