@@ -1,6 +1,6 @@
 <h1 align="center"> amitt </h1>
 <p align="center">
-  <b>amitt is a simple event emitter for browser and nod.js</b>
+  <b>amitt is a simple event emitter for browser and node.js</b>
 </p>
 
 ## Description
