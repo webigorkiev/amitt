@@ -143,3 +143,4 @@ class AmittEmitter {
 }
 export const amitt = () => new AmittEmitter();
 export default amitt;
+export type {AmittEmitter};

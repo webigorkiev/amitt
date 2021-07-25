@@ -38,3 +38,4 @@ declare class AmittEmitter {
 }
 export declare const amitt: () => AmittEmitter;
 export default amitt;
+export type { AmittEmitter };
