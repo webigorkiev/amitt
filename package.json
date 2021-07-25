@@ -1,9 +1,9 @@
 {
   "name": "amitt",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "amitt is a simple event emitter for browser and nod.js",
   "main": "dist/index.js",
-  "types": "src/index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "webpack --config ./webpack.config.js --mode production",
     "test": "ts-mocha --paths -p tsconfig.json --recursive ./src/**/*.{js,cjs,mjs,ts} ./test/unit/**/*.{js,cjs,mjs,ts}",
