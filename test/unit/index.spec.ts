@@ -1,14 +1,14 @@
-import amit from "dist";
-import type {Handler, EventType} from "dist";
+import {amitt} from "@/index";
+import type {Handler, EventType} from "@/index";
 import { expect } from 'chai';
 
 describe("amitt", () => {
 
     describe("method`s properties", () => {
-        const amittObj = amit();
+        const amittObj = amitt();
 
         it('should default export be a function', () => {
-            expect(amit).to.be.a('function');
+            expect(amitt).to.be.a('function');
         });
         it("on should be a function", () => {
             expect(amittObj)
@@ -28,7 +28,7 @@ describe("amitt", () => {
     });
 
     describe("checking the work of methods", () => {
-        const amittObj = amit();
+        const amittObj = amitt();
         const event : EventType = "test";
         const handler:Handler = () => true;
         const result = amittObj.on(event, handler);
@@ -49,7 +49,7 @@ describe("amitt", () => {
     });
 
     describe("events", () => {
-        const amittObj = amit();
+        const amittObj = amitt();
         const event : EventType = "test";
         const handler:Handler = (p1, p2) => {
 
@@ -84,7 +84,7 @@ describe("amitt", () => {
     });
 
     describe("events once", () => {
-        const amittObj = amit();
+        const amittObj = amitt();
         const event : EventType = "test";
         const handler:Handler = (p1, p2) => {
 
@@ -112,7 +112,7 @@ describe("amitt", () => {
     });
 
     describe("RegExp type of Event", () => {
-        const amittObj = amit();
+        const amittObj = amitt();
         const event1 : EventType = "test_one";
         const event2 : EventType = "test_two";
         const event3 : EventType = "ts";
