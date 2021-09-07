@@ -29,7 +29,7 @@ const {amitt} = require("amitt");
 * Testing coverage
 * RegExp event filters for emit
 * once execute handlers
-* emit can return array of Promise
+* emit can return array of Promise for async use
 
 ## Usage
 
