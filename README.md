@@ -1,10 +1,12 @@
 <h1 align="center"> amitt </h1>
 <p align="center">
-  <b>amitt is a simple event emitter for browser and node.js</b>
+  <b>amitt is a simple event emitter for browser and node.js </b>
 </p>
 
 ## Description
 amitt helps you build functional event emitter / pubsub
+
+Documentations - https://webigorkiev.github.io/amitt/
 
 ## Installation
 
