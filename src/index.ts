@@ -5,7 +5,10 @@ export declare type EventType = string | number | symbol | RegExp;
  * @class AsyncEvents
  * @description async events bus
  */
-class AmittEmitter<Events extends Map<EventType, Set<any>>> {
+class AmittEmitter<
+    Keys extends EventType,
+    Events extends Map<Keys, Set<any>> = Map<Keys, Set<any>>
+> {
     private onceEvents = new Map() as Events;
     private events = new Map() as Events;
 
@@ -16,7 +19,7 @@ class AmittEmitter<Events extends Map<EventType, Set<any>>> {
      * @returns is handler added
      */
     once<U extends any[] = [], V = any>(
-        type: keyof Events|string,
+        type: Keys,
         handler: (...args: U) => V | Promise<V>
     ): boolean {
 
@@ -30,7 +33,7 @@ class AmittEmitter<Events extends Map<EventType, Set<any>>> {
      * @returns  if handler has been adding
      */
     on<U extends any[] = [], V = any>(
-        type: keyof Events|string,
+        type: Keys,
         handler: (...args: U) => V | Promise<V>
     ): boolean {
 
@@ -44,7 +47,7 @@ class AmittEmitter<Events extends Map<EventType, Set<any>>> {
      * @returns - is handler has been removed
      */
     off<U = any>(
-        type: keyof Events|string,
+        type: Keys,
         handler: U
     ): boolean {
         for(const store of [this.events, this.onceEvents]) {
@@ -95,7 +98,7 @@ class AmittEmitter<Events extends Map<EventType, Set<any>>> {
                     }
                 }
             } else {
-                handlersMap.set(type, store.get(type));
+                handlersMap.set(type, store.get(type as Keys));
             }
 
             for(const key of handlersMap.keys()) {
@@ -137,7 +140,7 @@ class AmittEmitter<Events extends Map<EventType, Set<any>>> {
      */
     private addHandler< U extends any[], V>(
         store: Events,
-        type: keyof Events|string,
+        type: Keys,
         handler: (...args: U) => V | Promise<V>
     ): boolean {
         const handlers = store.get(type) || new Set();
@@ -149,5 +152,8 @@ class AmittEmitter<Events extends Map<EventType, Set<any>>> {
     }
 }
 
-export const amitt = () => new AmittEmitter();
+export const amitt = <
+    Keys extends EventType,
+    Events extends Map<Keys, Set<any>> = Map<Keys, Set<any>>
+>() => new AmittEmitter<Keys, Events>();
 export type {AmittEmitter};
