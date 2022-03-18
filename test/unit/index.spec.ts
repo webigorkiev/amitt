@@ -1,5 +1,5 @@
 import {amitt} from "@/index";
-import type {Handler, EventType} from "@/index";
+import type {EventType} from "@/index";
 import { expect } from 'chai';
 
 describe("amitt", () => {
@@ -30,7 +30,7 @@ describe("amitt", () => {
     describe("checking the work of methods", () => {
         const amittObj = amitt();
         const event : EventType = "test";
-        const handler:Handler = () => true;
+        const handler = () => true;
         const result = amittObj.on(event, handler);
         const result2 = amittObj.on(event, handler);
 
@@ -51,20 +51,20 @@ describe("amitt", () => {
     describe("events", () => {
         const amittObj = amitt();
         const event : EventType = "test";
-        const handler:Handler = (p1, p2) => {
+        const handler = (p1: number, p2: number) => {
 
             return [p1, p2]
         };
-        const handler2:Handler = p1 => {
+        const handler2 = (p1: number) => {
 
             return [p1]
         };
         amittObj.on(event, handler);
-        const result = amittObj.emit(event, 1, 2);
+        const result = amittObj.emit<number[], Promise<void>[]>(event, 1, 2);
         amittObj.on(event, handler2);
-        const result2 = amittObj.emit(event, 1, 2);
+        const result2 = amittObj.emit<number[], Promise<void>[]>(event, 1, 2);
         amittObj.off(event, handler);
-        const result3 = amittObj.emit(event, 1);
+        const result3 = amittObj.emit<number[], Promise<void>[]>(event, 1);
 
         it("emit result", () => {
             expect(result).is.a("array");
@@ -86,18 +86,18 @@ describe("amitt", () => {
     describe("events once", () => {
         const amittObj = amitt();
         const event : EventType = "test";
-        const handler:Handler = (p1, p2) => {
+        const handler = (p1: number, p2: number) => {
 
             return [p1, p2]
         };
-        const handler2:Handler = p1 => {
+        const handler2 = (p1: number) => {
 
             return [p1]
         };
         amittObj.once(event, handler);
         amittObj.once(event, handler2);
-        const result1 = amittObj.emit(event, 1, 2);
-        const result2 = amittObj.emit(event, 1, 2);
+        const result1 = amittObj.emit<number[], Promise<void>[]>(event, 1, 2);
+        const result2 = amittObj.emit<number[], Promise<void>[]>(event, 1, 2);
 
         it("emit result 2 once handler", () => {
             expect(result1).is.a("array");
@@ -116,15 +116,15 @@ describe("amitt", () => {
         const event1 : EventType = "test_one";
         const event2 : EventType = "test_two";
         const event3 : EventType = "ts";
-        const handler:Handler = (p1, p2) => {
+        const handler = (p1: number, p2: number) => {
 
             return [p1, p2]
         };
-        const handler2:Handler = p1 => {
+        const handler2 = (p1: number) => {
 
             return [p1]
         };
-        const handler3:Handler = p1 => {
+        const handler3 = (p1: number) => {
 
             return [p1]
         };
@@ -133,7 +133,7 @@ describe("amitt", () => {
         amittObj.on(event3, handler3);
         amittObj.off(event3, handler3);
         amittObj.on("ts", handler2);
-        const result = amittObj.emit(/^test/, 1, 2);
+        const result = amittObj.emit<number[], Promise<void>[]>(/^test/, 1, 2);
 
         it("emit /^test/", () => {
             expect(result).is.a("array");

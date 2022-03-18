@@ -1,22 +1,13 @@
-export declare type EventType = string|number|symbol|RegExp;
-export declare type Handler = (...args: Array<any>) => any|Promise<any>;
+export declare type EventType = string | number | symbol | RegExp;
 
 /**
  * @package @jwn-js/amitt
  * @class AsyncEvents
  * @description async events bus
  */
-class AmittEmitter {
-
-    /**
-     * Events that marks as once execute count
-     */
-    #once = new Map();
-
-    /**
-     * Map of events
-     */
-    #events = new Map();
+class AmittEmitter<Events extends Map<EventType, Set<any>>> {
+    private onceEvents = new Map() as Events;
+    private events = new Map() as Events;
 
     /**
      * Set event that invoke only one time
@@ -24,9 +15,12 @@ class AmittEmitter {
      * @param handler
      * @returns is handler added
      */
-    once(type: EventType, handler: Handler): boolean {
+    once<U extends any[] = [], V = any>(
+        type: keyof Events|string,
+        handler: (...args: U) => V | Promise<V>
+    ): boolean {
 
-        return this.#addHandler(this.#once, type, handler);
+        return this.addHandler<U, V>(this.onceEvents, type, handler);
     }
 
     /**
@@ -35,24 +29,12 @@ class AmittEmitter {
      * @param handler - fantion handler
      * @returns  if handler has been adding
      */
-    on(type: EventType, handler: Handler): boolean {
+    on<U extends any[] = [], V = any>(
+        type: keyof Events|string,
+        handler: (...args: U) => V | Promise<V>
+    ): boolean {
 
-        return this.#addHandler(this.#events, type, handler);
-    }
-
-    /**
-     * Add handler to store
-     * @param store
-     * @param type
-     * @param handler
-     */
-    #addHandler(store: Map<EventType, Set<Handler>>, type: EventType, handler: Handler): boolean {
-        const handlers = store.get(type) || new Set();
-        const size = handlers.size;
-        handlers.add(handler);
-        store.set(type, handlers);
-
-        return size !== handlers.size;
+        return this.addHandler<U, V>(this.events, type, handler);
     }
 
     /**
@@ -61,8 +43,11 @@ class AmittEmitter {
      * @param handler handler
      * @returns - is handler has been removed
      */
-    off(type: EventType, handler: Handler): boolean {
-        for(const store of [this.#events, this.#once]) {
+    off<U = any>(
+        type: keyof Events|string,
+        handler: U
+    ): boolean {
+        for(const store of [this.events, this.onceEvents]) {
             const handlers = store.get(type);
 
             if(handlers) {
@@ -93,18 +78,21 @@ class AmittEmitter {
      * @param args event argiments
      * @returns array of responses handlers, it can be Promise
      */
-    emit(type: EventType, ...args: Array<any>): Array<any> {
-        const responses: any[] = [];
-        for(const store of [this.#events, this.#once])  {
-            const isOnce = store === this.#once;
+    emit<U extends any[] = [], V extends any[] = []>(
+        type: EventType,
+        ...args: U
+    ): V {
+        const responses = [] as any;
+        for(const store of [this.events, this.onceEvents]) {
+            const isOnce = store === this.onceEvents;
             const handlersMap = new Map();
 
             if(type instanceof RegExp) {
 
                 for(const key of store.keys()) {
-                   if(type.test(key)) {
-                       handlersMap.set(key, store.get(key));
-                   }
+                    if(type.test(key as string)) {
+                        handlersMap.set(key, store.get(key));
+                    }
                 }
             } else {
                 handlersMap.set(type, store.get(type));
@@ -140,6 +128,26 @@ class AmittEmitter {
 
         return responses;
     }
+
+    /**
+     * Add handler to store
+     * @param store
+     * @param type
+     * @param handler
+     */
+    private addHandler< U extends any[], V>(
+        store: Events,
+        type: keyof Events|string,
+        handler: (...args: U) => V | Promise<V>
+    ): boolean {
+        const handlers = store.get(type) || new Set();
+        const size = handlers.size;
+        handlers.add(handler);
+        store.set(type, handlers);
+
+        return size !== handlers.size;
+    }
 }
+
 export const amitt = () => new AmittEmitter();
 export type {AmittEmitter};
