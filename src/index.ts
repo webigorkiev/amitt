@@ -6,7 +6,7 @@ export declare type EventType = string | number | symbol | RegExp;
  * @description async events bus
  */
 class AmittEmitter<
-    Keys extends EventType,
+    Keys extends EventType = any,
     Events extends Map<Keys, Set<any>> = Map<Keys, Set<any>>
 > {
     private onceEvents = new Map() as Events;
