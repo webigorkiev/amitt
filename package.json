@@ -1,15 +1,17 @@
 {
   "name": "amitt",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "private": true,
   "description": "amitt is a simple event emitter for browser and node.js",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "./index.js",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
   "scripts": {
     "build": "yarn docs && node scripts/build.js",
     "test": "ts-mocha --paths -p tsconfig.json --recursive ./src/**/*.{js,cjs,mjs,ts} ./test/unit/**/*.{js,cjs,mjs,ts}",
     "lint": "eslint src/** --ignore-path ./.eslintignore",
-    "docs": "typedoc --includeVersion --excludePrivate --out docs src/index.ts"
+    "docs": "typedoc --includeVersion --excludePrivate --out docs src/index.ts",
+    "deploy": "node deploy.mjs"
   },
   "keywords": [
     "emitter",
@@ -23,6 +25,10 @@
     "type": "git",
     "url": "https://github.com/webigorkiev/amitt.git"
   },
+  "bugs": {
+    "url": "https://github.com/webigorkiev/amitt/issues"
+  },
+  "homepage": "https://github.com/webigorkiev/amitt",
   "author": "webigorkiev",
   "license": "MIT",
   "devDependencies": {
@@ -36,8 +42,10 @@
     "chai-http": "^4.3.0",
     "esbuild": "^0.12.20",
     "eslint": "^7.26.0",
-    "fs-extra": "^10.0.0",
+    "fs-extra": "^10.0.1",
+    "margv": "^1.1.2",
     "mocha": "^8.4.0",
+    "prompts": "^2.4.2",
     "rollup": "^2.56.2",
     "rollup-plugin-dts": "^3.0.2",
     "rollup-plugin-esbuild": "^4.5.0",

@@ -17,11 +17,6 @@ const external = [
     ...Object.keys(pkg.devDependencies || {}),
     ...["path", "fs", "fs/promises", "crypto", "dns", "stream", "querystring"]
 ];
-// console.log(root);
-
-const inputClient = [
-    "./src/index.ts"
-];
 
 (async() => {
     log(chalk.green.bold("Start build bundle"));
@@ -38,12 +33,14 @@ const inputClient = [
         spaces: 2
     });
     log("Copy files to dist dir");
-    await buildPlugin(inputClient, root);
-    log("Build plugin client");
-    await buildTypes(inputClient, root);
+    await buildPlugin("./src/index.ts", "./dist/index.js", "cjs");
+    await buildPlugin("./src/index.ts", "./dist/index.mjs", "esm");
+    log("Build plugin");
+    await buildTypes(["./src/index.ts"], root);
     log("Build types client");
 
     log(chalk.green.bold("Build success"));
+    await checkFileSize("./dist/index.mjs");
     await checkFileSize("./dist/index.js");
 })();
 
@@ -51,7 +48,7 @@ const inputClient = [
  * Build bundle by rollup
  * @returns {Promise<void>}
  */
-const buildPlugin = async(input, root) => {
+const buildPlugin = async(input, output, format = "cjs") => {
     const bundle = await rollup.rollup({
         input,
         external,
@@ -67,9 +64,9 @@ const buildPlugin = async(input, root) => {
         ]
     });
     await bundle.write({
-        dir: root,
-        format: "cjs",
-        exports: "auto"
+        format,
+        file: output,
+        exports: "named"
     });
     await bundle.close();
 };

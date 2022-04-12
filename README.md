@@ -6,7 +6,7 @@
 ## Description
 amitt helps you build functional event emitter / pubsub
 
-Documentations - https://webigorkiev.github.io/amitt/
+Documentations for types - https://webigorkiev.github.io/amitt/
 
 ## Installation
 
