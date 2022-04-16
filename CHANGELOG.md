@@ -1,3 +1,9 @@
+## [0.0.13](https://github.com/webigorkiev/amitt/tree/v0.0.13) (2022-04-16)
+
+### Bug Fixes
+
+* types in emit methods
+
 ## [0.0.12](https://github.com/webigorkiev/amitt/tree/v0.0.12) (2022-04-12)
 
 ### Improvement

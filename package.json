@@ -1,6 +1,6 @@
 {
   "name": "amitt",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "private": true,
   "description": "amitt is a simple event emitter for browser and node.js",
   "main": "./index.js",

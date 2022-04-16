@@ -82,7 +82,7 @@ class AmittEmitter<
      * @returns array of responses handlers, it can be Promise
      */
     emit<U extends any[] = [], V extends any[] = []>(
-        type: EventType,
+        type: Keys,
         ...args: U
     ): V {
         const responses = [] as any;
@@ -98,7 +98,7 @@ class AmittEmitter<
                     }
                 }
             } else {
-                handlersMap.set(type, store.get(type as Keys));
+                handlersMap.set(type, store.get(type));
             }
 
             for(const key of handlersMap.keys()) {
