@@ -1,3 +1,9 @@
+## [0.0.14](https://github.com/webigorkiev/amitt/tree/v0.0.14) (2022-04-24)
+
+### Improvement
+
+* Add last argument to handler with event options
+
 ## [0.0.13](https://github.com/webigorkiev/amitt/tree/v0.0.13) (2022-04-16)
 
 ### Bug Fixes
