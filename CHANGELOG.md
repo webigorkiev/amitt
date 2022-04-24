@@ -1,3 +1,9 @@
+## [0.0.15](https://github.com/webigorkiev/amitt/tree/v0.0.15) (2022-04-24)
+
+### Bug Fixes
+
+* types in on and once methods
+
 ## [0.0.14](https://github.com/webigorkiev/amitt/tree/v0.0.14) (2022-04-24)
 
 ### Improvement

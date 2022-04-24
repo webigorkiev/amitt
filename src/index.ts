@@ -1,8 +1,4 @@
 export declare type EventType = string | number | symbol | RegExp;
-export interface Options {
-    type: EventType,
-    once: boolean
-}
 
 /**
  * @package @jwn-js/amitt
@@ -24,7 +20,7 @@ class AmittEmitter<
      */
     once<U extends any[] = [], V = any>(
         type: Keys,
-        handler: (...args: [...U, Options]) => V | Promise<V>
+        handler: (...args: [...U, {type: Keys, once: boolean}]) => V | Promise<V>
     ): boolean {
 
         return this.addHandler<U, V>(this.onceEvents, type, handler);
@@ -38,7 +34,7 @@ class AmittEmitter<
      */
     on<U extends any[] = [], V = any>(
         type: Keys,
-        handler: (...args: [...U, Options]) => V | Promise<V>
+        handler: (...args: [...U, {type: Keys, once: boolean}]) => V | Promise<V>
     ): boolean {
 
         return this.addHandler<U, V>(this.events, type, handler);
@@ -114,7 +110,7 @@ class AmittEmitter<
                 }
 
                 for(const handler of handlers) {
-                    const opt:Options = {
+                    const opt:{type: Keys, once: boolean} = {
                         type: key,
                         once: isOnce
                     };
@@ -149,7 +145,7 @@ class AmittEmitter<
     private addHandler< U extends any[], V>(
         store: Events,
         type: Keys,
-        handler: (...args: [...U, Options]) => V | Promise<V>
+        handler: (...args: [...U, {type: Keys, once: boolean}]) => V | Promise<V>
     ): boolean {
         const handlers = store.get(type) || new Set();
         const size = handlers.size;
