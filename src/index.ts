@@ -20,7 +20,7 @@ class AmittEmitter<
      */
     once<U extends any[] = [], V = any>(
         type: Keys,
-        handler: (...args: [...U, {type: Keys, once: boolean}]) => V | Promise<V>
+        handler: (...args: [...U, {type: Keys, once: boolean}]|any[]) => V | Promise<V>
     ): boolean {
 
         return this.addHandler<U, V>(this.onceEvents, type, handler);
@@ -34,7 +34,7 @@ class AmittEmitter<
      */
     on<U extends any[] = [], V = any>(
         type: Keys,
-        handler: (...args: [...U, {type: Keys, once: boolean}]) => V | Promise<V>
+        handler: (...args: [...U, {type: Keys, once: boolean}]|any[]) => V | Promise<V>
     ): boolean {
 
         return this.addHandler<U, V>(this.events, type, handler);
