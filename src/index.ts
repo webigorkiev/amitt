@@ -81,7 +81,7 @@ class AmittEmitter<
      * @param args event argiments
      * @returns array of responses handlers, it can be Promise
      */
-    emit<U extends any[] = [], V extends any = any>(
+    emit<U extends any[] = [], V extends any[] = any[]>(
         type: Keys,
         ...args: U
     ): V|Promise<V> {
