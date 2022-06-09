@@ -84,7 +84,7 @@ class AmittEmitter<
     emit<U extends any[] = [], V extends any[] = any[]>(
         type: Keys,
         ...args: U
-    ): V|Promise<V> {
+    ): V {
         const responses = [] as any;
         for(const store of [this.events, this.onceEvents]) {
             const isOnce = store === this.onceEvents;
