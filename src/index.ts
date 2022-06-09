@@ -81,10 +81,10 @@ class AmittEmitter<
      * @param args event argiments
      * @returns array of responses handlers, it can be Promise
      */
-    emit<U extends any[] = [], V extends any[] = []>(
+    emit<U extends any[] = [], V extends any = any>(
         type: Keys,
         ...args: U
-    ): V {
+    ): V|Promise<V> {
         const responses = [] as any;
         for(const store of [this.events, this.onceEvents]) {
             const isOnce = store === this.onceEvents;
