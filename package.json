@@ -9,7 +9,6 @@
   "scripts": {
     "build": "yarn docs && node scripts/build.js",
     "test": "ts-mocha --paths -p tsconfig.json --recursive ./src/**/*.{js,cjs,mjs,ts} ./test/unit/**/*.{js,cjs,mjs,ts}",
-    "lint": "eslint src/** --ignore-path ./.eslintignore",
     "docs": "typedoc --includeVersion --excludePrivate --out docs src/index.ts",
     "deploy": "node deploy.mjs"
   },
@@ -36,12 +35,9 @@
     "@types/expect": "^24.3.0",
     "@types/mocha": "^8.2.2",
     "@types/node": "^15.3.0",
-    "@typescript-eslint/eslint-plugin": "^4.23.0",
-    "@typescript-eslint/parser": "^4.29.1",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
     "esbuild": "^0.12.20",
-    "eslint": "^7.26.0",
     "fs-extra": "^10.0.1",
     "margv": "^1.1.2",
     "mocha": "^8.4.0",
