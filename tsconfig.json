@@ -1,30 +1,49 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Node 14",
-
   "compilerOptions": {
-    "lib": ["es2020"],
-    "module": "commonjs",
-    "target": "es2020",
-    "strictPropertyInitialization": false,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "strict": true,
+    "noImplicitThis": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "noImplicitAny": true,
+    "strictFunctionTypes": false,
     "skipLibCheck": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noImplicitThis": false,
-    "declaration": true,
-    "outDir": "dist",
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "vite/client",
+      "node"
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
       ]
-    }
+    },
   },
   "include": [
-    "./src/*"
+    "src/**/*.mts",
+    "src/**/*.spec.mts",
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "node_modules/vitest/globals.d.ts"
   ],
-  "exclude"        : [
-    "node_modules"
+  "exclude": [
+    "dist"
   ]
 }

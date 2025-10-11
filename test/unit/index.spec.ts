@@ -59,9 +59,9 @@ describe("amitt", () => {
 
             return [p1]
         };
-        amittObj.on(event, handler);
+        amittObj.on<[number, number]>(event, handler);
         const result = amittObj.emit<number[], Promise<void>[]>(event, 1, 2);
-        amittObj.on(event, handler2);
+        amittObj.on<[number]>(event, handler2);
         const result2 = amittObj.emit<number[], Promise<void>[]>(event, 1, 2);
         amittObj.off(event, handler);
         const result3 = amittObj.emit<number[], Promise<void>[]>(event, 1);
@@ -94,8 +94,8 @@ describe("amitt", () => {
 
             return [p1]
         };
-        amittObj.once(event, handler);
-        amittObj.once(event, handler2);
+        amittObj.once<[number, number]>(event, handler);
+        amittObj.once<[number]>(event, handler2);
         const result1 = amittObj.emit<number[], Promise<void>[]>(event, 1, 2);
         const result2 = amittObj.emit<number[], Promise<void>[]>(event, 1, 2);
 
@@ -128,11 +128,11 @@ describe("amitt", () => {
 
             return [p1]
         };
-        amittObj.on(event1, handler);
-        amittObj.on(event2, handler2);
-        amittObj.on(event3, handler3);
+        amittObj.on<[number, number]>(event1, handler);
+        amittObj.on<[number]>(event2, handler2);
+        amittObj.on<[number]>(event3, handler3);
         amittObj.off(event3, handler3);
-        amittObj.on("ts", handler2);
+        amittObj.on<[number]>("ts", handler2);
         const result = amittObj.emit<number[], Promise<void>[]>(/^test/, 1, 2);
 
         it("emit /^test/", () => {

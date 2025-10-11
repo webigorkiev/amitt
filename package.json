@@ -6,9 +6,12 @@
   "main": "./index.js",
   "module": "./index.mjs",
   "types": "./index.d.ts",
+  "engines": {
+    "node": ">=v20.19.3"
+  },
   "scripts": {
     "build": "yarn docs && node scripts/build.js",
-    "test": "ts-mocha --paths -p tsconfig.json --recursive ./src/**/*.{js,cjs,mjs,ts} ./test/unit/**/*.{js,cjs,mjs,ts}",
+    "test": "vitest run",
     "docs": "typedoc --includeVersion --excludePrivate --out docs src/index.ts",
     "deploy": "node deploy.mjs"
   },
@@ -32,22 +35,19 @@
   "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.5",
-    "@types/expect": "^24.3.0",
-    "@types/mocha": "^8.2.2",
-    "@types/node": "^15.3.0",
-    "chai": "^4.3.4",
-    "chai-http": "^4.3.0",
+    "@types/node": "20.19.3",
     "esbuild": "^0.12.20",
     "fs-extra": "^10.0.1",
+    "jsdom": "^27.0.0",
     "margv": "^1.1.2",
-    "mocha": "^8.4.0",
     "prompts": "^2.4.2",
     "rollup": "^2.56.2",
     "rollup-plugin-dts": "^3.0.2",
     "rollup-plugin-esbuild": "^4.5.0",
     "ts-loader": "^9.2.2",
-    "ts-mocha": "^8.0.0",
-    "typedoc": "^0.22.13",
-    "typescript": "^4.3.2"
-  }
+    "typedoc": "^0.28.14",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {}
 }

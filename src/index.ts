@@ -50,12 +50,13 @@ class AmittEmitter<
 
     // Invoke all handlers for a given type
     // emit('test-event');
+    // ответы handlers склаываются в responses
     emit<U extends any[] = [], V extends any[] = any[]>(
-        type: Keys,
+        type: Keys, // {key: Keys, immediate?: boolean}
         ...args: U
     ): V {
         const responses = [] as any;
-        for(const store of [this.events, this.onceEvents]) {
+        for(const store of [this.events, this.onceEvents]) { // Обходит карту событий и крту одноразовых собитй
             const isOnce = store === this.onceEvents;
             const handlersMap = new Map(); // store handlers by type
             if(type instanceof RegExp) {
@@ -67,7 +68,7 @@ class AmittEmitter<
             } else {
                 handlersMap.set(type, store.get(String(type)));
             }
-            for(const key of handlersMap.keys()) { // exec by handelers map
+            for(const key of handlersMap.keys()) { // exec by handlers map
                 const handlers = handlersMap.get(key);
                 if(!handlers || !handlers.size) {
                     continue;
@@ -95,8 +96,8 @@ class AmittEmitter<
     }
 
     // TODO
-    // зpause
-    // emit // Отложенный emit пока не будет выполнен
+    // pause
+    // emit // Отложенный emit пока не будет выполнен // immediate // Добавить опцию
     // resume
 
     // Add handler to store
