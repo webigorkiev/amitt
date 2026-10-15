@@ -1,3 +1,7 @@
+## [1.0.21]
+
+* Fix types in on and off method
+
 ## [0.0.15](https://github.com/webigorkiev/amitt/tree/v0.0.15) (2022-04-24)
 
 ### Bug Fixes

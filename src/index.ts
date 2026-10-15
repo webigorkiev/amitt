@@ -27,7 +27,7 @@ class AmittEmitter<
     // Remove an event handler for a given type
     off<U = any>(
         type: string,
-        handler: U
+        handler?: U
     ): boolean {
         for(const store of [this.events, this.onceEvents]) {
             const handlers = store.get(type);
