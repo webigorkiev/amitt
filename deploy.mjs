@@ -66,4 +66,4 @@ await spawnLog("yarn publish ./dist --access=public --new-version=" + pkg.versio
 console.log(green, "5. Процесс успешно завершен", black);
 console.log("GitHub", "https://github.com/webigorkiev/amitt/");
 console.log("GitHub Pages", "https://webigorkiev.github.io/amitt/");
-console.log("npm", "https://github.com/webigorkiev/amitt");
+console.log("npm", "https://www.npmjs.com/package/amitt");
